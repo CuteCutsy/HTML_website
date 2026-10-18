@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача</title>
+    <style>
+        h1 {
+            /* ===== РАДУЖНЫЙ ЗАГОЛОВОК ===== */
+            font-size: 3em;
+            text-align: center;
+            background: linear-gradient(
+                90deg,
+                #ff0000, #ff7f00, #ffff00, #00ff00,
+                #0000ff, #4b0082, #9400d3, #ff0000
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 5s linear infinite;
+        }
+
+        /* ===== РАДУЖНЫЕ ССЫЛКИ ===== */
+        ul li a {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+
+            background: linear-gradient(
+                90deg,
+                #ff0000, #ff7f00, #ffff00, #00ff00,
+                #0000ff, #4b0082, #9400d3, #ff0000
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+       ul li a:hover { transform: scale(1.15); animation: rainbow 2s linear infinite; }
+       ul li a.active { animation: rainbow 3s linear infinite; }
+
+        /* ===== АНИМАЦИЯ ПЕРЕЛИВАНИЯ ===== */
+        @keyframes rainbow {
+            0%   { background-position:   0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ===== РАДУЖНОЕ ВЫДЕЛЕНИЕ ===== */
+        ::selection {
+            background: linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3);
+            color: #bde4ff;
+        }
+        ::-moz-selection {
+            background: linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3);
+            color: #bde4ff;
+        }
+
+        /* ===== РАДУЖНЫЕ ТОЧКИ ===== */
+    ul li:nth-child(7n+1)::marker { color: #ff0000; }
+    ul li:nth-child(7n+2)::marker { color: #ff7f00; }
+    ul li:nth-child(7n+3)::marker { color: #ffff00; }
+    ul li:nth-child(7n+4)::marker { color: #00ff00; }
+    ul li:nth-child(7n+5)::marker { color: #0000ff; }
+    ul li:nth-child(7n+6)::marker { color: #4b0082; }
+    ul li:nth-child(7n+7)::marker { color: #9400d3; }
+
+     /* =====  ===== */
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #bde4ff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1> ЗАДАЧА </h1>
+<ul>
+    <li> <a href='main.html'>  Главная страница </a> </li>
+    <li> <a href='info.html'>  Информационная страница с главами </a> </li>
+    <li> <a href='test_img.html'> Фотокарточки </a> </li>
+    <li> <a href="forma.html"> Форма </a> </li>
+    <li> <a href='passport.html'>Паспорт </a> </li>
+    <li> <a href='table.html'>Таблица </a> </li>
+    <li> <a href='task.html'  class="active">Задача </a> </li>
+    <li> <a href="dom.html">Считывание из DOM</a></li>
+    <li> <a href="https://www.hse.ru/" target="_blank"> Внешний сайт </a> </li>
+    <li> <a href="https://www.hse.ru/" target="_blank"><img src="../images/hse_logo.jpg" width= "18" alt="" /></a></li>
+
+</ul>
+
+   
+    <form action="https://httpbin.org/post" method="post" target="_blank" id="UserEnter">
+        
+        <textarea name="formulation" rows="3">Можно ли из бревна, имеющего диаметр поперечного сечения D, выпилить квадратный брус шириной A? Если можно - отправить все на сервер</textarea>
+
+        <div class="input-group">
+            <label>Диаметр бревна D: <input id="D" name="D" type="number" step="any" value="200" required></label>
+        </div>
+        
+        <div class="input-group">
+            <label>Ширина бруса A: <input id="A" name="A" type="number" step="any" value="130" required></label>
+        </div>
+
+        <div class="result-box">
+            <label>Результат: <input id="result" name="result" value="не определен" readonly></label>
+        </div>
+
+        <div class="btn-group">
+            <!-- КНОПКА ПРОВЕРКИ -->
+            <input id="verify" type="button" value="Проверить" onclick="checkTask()">
+            <!-- КНОПКА ОТПРАВИТЬ -->
+            <input id="submit-btn" type="submit" value="Отправить на сервер">
+        </div>
+    </form>
+</div>
+
+<script>
+    function checkTask() {
+        // ЗНАЧЕНИЕ ИЗ ПОЛЕЙ
+        let D = parseFloat(document.getElementById('D').value);
+        let A = parseFloat(document.getElementById('A').value);
+        let resultField = document.getElementById('result');
+
+        // ПРОВЕРКА КОРЕКТНОСТИ ВВОДА
+        if (isNaN(D) || isNaN(A) || D <= 0 || A <= 0) {
+            resultField.value = "Ошибка ввода! Введите положительные числа.";
+            resultField.style.color = "red";
+            return;
+        }
+
+        // ФОРМУЛА: A * Math.sqrt(2) <= D
+        let diagonal = A * Math.sqrt(2);
+
+        if (diagonal <= D) {
+            resultField.value = "Да, можно";
+            resultField.style.color = "green";
+        } else {
+            resultField.value = "Нет, нельзя";
+            resultField.style.color = "red";
+        }
+    }
+</script>
+
+</body></html>

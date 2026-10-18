@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Таблица</title>
+    <style>
+        /* ===== РАДУЖНЫЙ ЗАГОЛОВОК ===== */
+        h1 {
+            font-size: 3em; text-align: center;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+            color: transparent; animation: rainbow 5s linear infinite;
+        }
+
+        /* ===== РАДУЖНЫЕ ССЫЛКИ ===== */
+        ul li a {
+            display: inline-block; padding: 2px 6px; border-radius: 4px; text-decoration: none; font-weight: bold;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+            color: transparent; -webkit-text-fill-color: transparent; transition: transform 0.2s ease;
+        }
+        
+        /* ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ НА ССЫЛКИ */
+        ul li a:hover { transform: scale(1.15); animation: rainbow 2s linear infinite; }
+        ul li a.active { animation: rainbow 3s linear infinite; }
+
+        /* ===== АНИМАЦИЯ И ВЫДЕЛЕНИЕ ===== */
+        @keyframes rainbow { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        ::selection { background: linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3); color: #fff; }
+
+        /* ===== ЗАДНИЙ ПЛАН ВСЕЙ СТРАНИЦЫ ===== */
+        body {
+            background-image: url('https://i.pinimg.com/736x/e5/f1/f4/e5f1f4c68a5f37821c4aaf581ce85c11.jpg');
+            background-size: cover; background-attachment: fixed; background-position: center;
+            margin: 0; padding: 20px;
+        }
+
+        ::selection {
+      background: linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3); /* ФОН ВЫДЕЛЕНИЯ СТАНОВИТСЯ РАДУЖНЫМ */
+      color: #bde4ff; /* А ЦВЕТ САМИХ БУКВ - ГОЛУБЫМ */
+        }
+
+        /* ===== РАДУЖНЫЕ ТОЧКИ ===== */
+        ul li:nth-child(7n+1)::marker { color: #ff0000; }
+        ul li:nth-child(7n+2)::marker { color: #ff7f00; }
+        ul li:nth-child(7n+3)::marker { color: #ffff00; }
+        ul li:nth-child(7n+4)::marker { color: #00ff00; }
+        ul li:nth-child(7n+5)::marker { color: #0000ff; }
+        ul li:nth-child(7n+6)::marker { color: #4b0082; }
+        ul li:nth-child(7n+7)::marker { color: #9400d3; }
+    </style>
+</head>
+
+<body>
+
+<!-- ТРЕБОВАНИЕ: ЕДИНАЯ НАВИГАЦИЯ -->
+<h1>ТАБЛИЦА</h1>
+<ul>
+    <li><a href="main.html">Главная страница</a></li>
+    <li><a href="info.html">Информационная страница с главами</a></li>
+    <li><a href="test_img.html">Фотокарточки</a></li>
+    <li><a href="forma.html">Форма</a></li>
+    <li><a href="passport.html">Паспорт</a></li>
+    <li><a href="table.html" class="active">Таблица</a></li>
+    <li><a href="task.html">Задача</a></li>
+    <li><a href="dom.html">Считывание из DOM</a></li>
+    <li><a href="https://www.hse.ru/" target="_blank">Внешний сайт</a></li>
+    <li> <a href="https://www.hse.ru/" target="_blank"><img src="../images/hse_logo.jpg" width="18" alt="" /></a></li>
+</ul>
+
+<hr style="height: 4px; border: none; background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);">
+
+<!-- ГЛАВНАЯ ТАБЛИЦА -->
+<table width="600" align="center" bgcolor="#808080" background="https://i.pinimg.com/1200x/7a/d2/f2/7ad2f2d2248c8ce5f2ff32c0189ab1b5.jpg" border="2" bordercolor="red" cellspacing="15" cellpadding="10">
+
+    <!-- РЯД 1 -->
+    <tr height="100">
+        <!-- 1-я ячейка -->
+        <td width="400" align="right" valign="top">
+            <img src="../images/jetpackcat.jpg" height="50" alt="Картинка"><br>
+            <font size="2">Подпись</font>
+        </td>
+        
+        <!-- 2-я ячейка -->
+        <td></td>
+        
+        <!-- 3-я ячейка -->
+        <td width="200" background="../images/kotshok.jpg">
+            Фон
+        </td>
+    </tr>
+
+    <!-- РЯД 2 -->
+    <tr height="20">
+        <td colspan="3" align="center">Одна объединенная ячейка</td>
+    </tr>
+
+    <!-- РЯД 3 -->
+    <tr height="300">
+        <!-- 1-я ячейка -->
+        <td width="400">Тут пусто (400x300)</td>
+        <!-- 2-я ячейка -->
+        <td colspan="2" bgcolor="green">Зеленый фон</td>
+    </tr>
+
+    <!-- РЯД 4 -->
+    <tr>
+        <!-- Левая ячейка с вложенной таблицей -->
+        <td width="50%" height="200">
+            <table border="1" width="100%" cellspacing="0" cellpadding="20">
+                <tr>
+                    <td><img src="../images/kotbleh.jpg" alt="Вложенная" width="90" height="90"></td>
+                    <td>Ячейка 2</td>
+                </tr>
+                <tr>
+                    <td>Ячейка 3</td>
+                    <td>Ячейка 4</td>
+                </tr>
+            </table>
+        </td>
+        
+        <!-- Правая ячейка -->
+        <td colspan="2" width="50%" align="right" valign="middle">
+            <img src="../images/kotshok.jpg" hspace="15" vspace="15" alt="Справа" width="200">
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Фотокарточки</title>
+  <style>
+    
+    /* ===== ФОТОКАРТОЧКИ ===== */
+    figure {
+      background: #bde4ff;
+      padding: 10px;
+      display: block;
+      float: left;
+      margin: 0 10px 10px 0;
+      text-align: center;
+      border-radius: 6px; /* УГЛЫ */
+      transition: background-color 0.3s ease, transform 0.3s ease; 
+    }
+    
+    figcaption {
+      color: #ffffff;
+      margin-top: 10px;
+      transition: color 0.3s ease;
+    }
+
+    /* ===== РАДУГА ПРИ НАВЕДЕНИИ НА КАРТИНКУ ===== */
+    
+    figure:has(a:hover) {
+      background: linear-gradient(
+        90deg,
+        #ff0000, #ff7f00, #ffff00, #00ff00,
+        #0000ff, #4b0082, #9400d3, #ff0000
+      );
+      background-size: 200% auto;
+      animation: rainbow 3s linear infinite;
+      transform: translateY(-5px); /* Карточка чуть подпрыгивает */
+    }
+
+    /* ПОДПИСЬ */
+    figure:has(a:hover) figcaption {
+      color: #ffffff;  
+      font-weight: bold;   
+    }
+
+    /* ЭФФЕКТЫ КАРТИНКИ */
+    figure img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 4px;
+    }
+    
+    figure:has(a:hover) img {
+      transform: scale(1.08);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
+                  0 0 25px rgba(255, 0, 0, 0.5), 
+                  0 0 35px rgba(0, 0, 255, 0.5);
+    }
+
+    /* ===== РАДУЖНЫЙ ЗАГОЛОВОК ===== */
+    h1 {
+      font-size: 3em;
+      text-align: center;
+      background: linear-gradient(
+        90deg,
+        #ff0000, #ff7f00, #ffff00, #00ff00,
+        #0000ff, #4b0082, #9400d3, #ff0000
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+    }
+
+    /* ===== РАДУЖНЫЕ ССЫЛКИ ===== */
+    ul li a {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+
+      background: linear-gradient(
+        90deg,
+        #ff0000, #ff7f00, #ffff00, #00ff00,
+        #0000ff, #4b0082, #9400d3, #ff0000
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+
+      transition: transform 0.2s ease;
+    }
+
+    ul li a:hover { transform: scale(1.15); animation: rainbow 2s linear infinite; }
+    ul li a.active { animation: rainbow 3s linear infinite; }
+
+    /* ===== АНИМАЦИЯ ПЕРЕЛИВАНИЯ ===== */
+    @keyframes rainbow {
+      0%   { background-position:   0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ===== РАДУЖНОЕ ВЫДЕЛЕНИЕ ===== */
+    ::selection {
+      background: linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3);
+      color: #bde4ff;
+    }
+    ::-moz-selection {
+      background: linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3);
+      color: #bde4ff;
+    }
+    
+    /* ===== РАДУЖНЫЕ ТОЧКИ ===== */
+    ul li:nth-child(7n+1)::marker { color: #ff0000; } 
+    ul li:nth-child(7n+2)::marker { color: #ff7f00; } 
+    ul li:nth-child(7n+3)::marker { color: #ffff00; } 
+    ul li:nth-child(7n+4)::marker { color: #00ff00; } 
+    ul li:nth-child(7n+5)::marker { color: #0000ff; } 
+    ul li:nth-child(7n+6)::marker { color: #4b0082; } 
+    ul li:nth-child(7n+7)::marker { color: #9400d3; } 
+  </style> 
+</head>
+<body>
+
+  <h1>ФОТОКАРТОЧКИ</h1>
+  <ul>
+    <li><a href="main.html">Главная страница</a></li>
+    <li><a href="info.html">Информационная страница с главами</a></li>
+    <li><a href="test_img.html" class="active">Фотокарточки</a></li>
+    <li><a href="../scripts/forma.html">Форма</a></li>
+    <li><a href="passport.html">Паспорт</a></li>
+    <li><a href="table.html">Таблица</a></li>
+    <li><a href="task.html">Задача</a></li>
+    <li><a href="dom.html">Считывание из DOM</a></li>
+    <li><a href="https://www.hse.ru/" target="_blank">Внешний сайт</a></li>
+    <li> <a href="https://www.hse.ru/" target="_blank"><img src="../images/hse_logo.jpg" width= "18" alt="" /></a></li>
+  </ul>
+
+  <article>
+    <figure>
+      <p><img src="../images/happydog.jpg" alt="" /></p>
+      <figcaption>Довольный щенок</figcaption>
+    </figure>
+    <figure>
+      <p><img src="../images/they_do.jpg" alt="" /></p>
+      <figcaption>Помошники Рэма</figcaption>
+    </figure>
+    <figure>
+      <p><img src="https://i.pinimg.com/originals/38/01/15/380115ffc11710c1329372e7381c2ab8.gif" alt="" /></p>
+      <figcaption>Webcore котики</figcaption>
+    </figure> 
+    <figure>
+      <p><img src="../images/nesquik.jpg" alt="" width="100" /></p>
+      <figcaption>Малыш завтракает</figcaption>
+    </figure>
+    <figure>
+      <p>
+        <a href="big_img_cat.html" target="_blank"> <img src="../images/jetpackcat.jpg" width="100" alt="jetpack cat" /> </a>
+      </p>
+      <figcaption>Фоточка-ссылочка</figcaption>
+    </figure>
+   
+  </article>
+
+</body>
+</html>

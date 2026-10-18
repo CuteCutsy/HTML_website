@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Паспорт</title>
+    <style>
+        /* ===== РАДУЖНЫЙ ЗАГОЛОВОК ===== */
+         h1 {
+      font-size: 3em;
+      text-align: center;
+      background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: rainbow 5s linear infinite;
+    }
+
+        /* ===== РАДУЖНЫЕ ССЫЛКИ ===== */
+        ul li a {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.2s ease;
+        }
+
+        ul li a:hover { transform: scale(1.15); animation: rainbow 2s linear infinite; }
+        ul li a.active { animation: rainbow 3s linear infinite; }
+
+        @keyframes rainbow {
+            0%   { background-position:   0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ===== РАДУЖНЫЕ ТОЧКИ ===== */
+        ul li:nth-child(7n+1)::marker { color: #ff0000; }
+        ul li:nth-child(7n+2)::marker { color: #ff7f00; }
+        ul li:nth-child(7n+3)::marker { color: #ffff00; }
+        ul li:nth-child(7n+4)::marker { color: #00ff00; }
+        ul li:nth-child(7n+5)::marker { color: #0000ff; }
+        ul li:nth-child(7n+6)::marker { color: #4b0082; }
+        ul li:nth-child(7n+7)::marker { color: #9400d3; }
+
+        /* ===== МАГИЯ ПАСПОРТА ===== */
+        .passport-container {
+            width: 900px; 
+            height: 1200px; 
+            margin: 30px auto;
+            background-image: url('../images/passport.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: white;
+        }
+
+        /* ОБЩИЕ НАСТРОЙКИ */
+        .passport-container p {
+            position: absolute;
+            margin: 0;
+            font-size: 22px; 
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .hidden-p { display: none; }
+
+
+        /* ОБЩИЕ НАСТРОЙКИ ДЛЯ ВСЕХ ТЕКСТОВ */
+        .passport-container p {
+            position: absolute;
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a1a1a;
+            letter-spacing: 2px; 
+        }
+
+        .hidden-p { display: none; }
+
+        /* Фамилия */
+        .val-surname { top: 625px; left: 350px; }
+
+        /* Имя */
+        .val-name { top: 720px; left: 300px; }
+
+        /* Отчество */
+        .val-patronymic { top: 769px; left: 350px; }
+
+        /* Пол */
+        .val-gender { top: 815px; left: 290px; }
+
+        /* Дата рождения */
+        .val-dob { top: 815px; left: 520px; }
+
+        /* Место рождения */
+        .val-pob { top: 860px; left: 350px; }
+
+        /* Кем выдан */
+        .val-issued { top: 85px; left: 270px; font-size: 18px; }
+        
+        /* Дата выдачи */
+        .val-issue-date { top: 300px; left: 100px; font-size: 18px; }
+        
+        /* Код подразделения */
+        .val-code { top: 320px; left: 590px; font-size: 18px; }
+
+        /* ===== СТИЛЬ ДЛЯ ФОТОГРАФИИ ===== */
+        .passport-photo {
+            position: absolute;
+            top: 53%;      /* Положение сверху */
+            left: 7%;      /* Положение слева */
+            width: 16%;    /* Ширина фото */
+            height: 20%;   /* Высота фото */
+            object-fit: cover; /* Чтобы красиво обрезалось по краям */
+            border: 2px solid #666; /* Рамочка */
+            background-color: #eee; /* Если картинка не загрузится */
+        }
+
+        /* ===== СТИЛЬ ДЛЯ КНОПКИ ===== */
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        #toggleBtn {
+            /* Радужная кнопка */
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Тень для текста */
+        }
+        #toggleBtn:hover {
+            transform: scale(1.05); 
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>ПАСПОРТ</h1>
+<ul>
+    <li><a href="main.html">Главная страница</a></li>
+    <li><a href="info.html">Информационная страница с главами</a></li>
+    <li><a href="test_img.html">Фотокарточки</a></li>
+    <li><a href="forma.html">Форма</a></li>
+    <li><a href="passport.html" class="active">Паспорт</a></li>
+    <li><a href="table.html">Таблица</a></li>
+    <li><a href="task.html">Задача</a></li>
+    <li><a href="dom.html">Считывание из DOM</a></li>
+    <li><a href="https://www.hse.ru/" target="_blank">Внешний сайт</a></li>
+    <li> <a href="https://www.hse.ru/" target="_blank"><img src="../images/hse_logo.jpg" width="18" alt="" /></a></li>
+</ul>
+
+<hr style="height: 4px; border: none; background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);">
+
+<!-- ПАСПОРТ -->
+<div class="passport-container">
+    
+    <img src="../images/jetpackcat.jpg" class="passport-photo" alt="Фото">
+
+    <p class="hidden-p">ПАСПОРТ</p>
+    <p class="hidden-p">РОССИЙСКАЯ ФЕДЕРАЦИЯ</p>
+    <p class="val-surname"> <span>КРЕСТЬЯНИНОВА</span></p>
+    <p class="val-name"> <span>ЯНА</span></p>
+    <p class="val-patronymic"> <span>СЕРГЕЕВНА</span></p>
+    <p class="val-gender"> <span>ЖЕН</span></p>
+    <p class="val-dob"> <span>01.01.2007</span></p>
+    <p class="val-pob"> <span>Г. МОСКВА</span></p>
+    <p class="val-issued"> <span>ГУ МВД ПО Г.МОСКВЕ</span></p>
+    <p class="val-issue-date"> <span>01.01.2014</span></p>
+    <p class="val-code"> <span>770-070</span></p>
+
+</div>
+
+<!-- КНОПКА -->
+<div class="btn-container">
+    <button id="toggleBtn" onclick="toggleLanguage()">Перевести на латиницу</button>
+</div>
+
+</body>
+
+<script>
+    let isLatin = false;
+
+    function toggleLanguage() {
+        const btn = document.getElementById('toggleBtn');
+        
+        // Находим элементы текста внутри наших тегов <p> и <span>
+        const surname = document.querySelector('.val-surname span');
+        const name = document.querySelector('.val-name span');
+        const patronymic = document.querySelector('.val-patronymic span');
+        const gender = document.querySelector('.val-gender span');
+        const pob = document.querySelector('.val-pob span');
+
+        if (isLatin === false) {
+            // ЛАТИНИЦА
+            surname.innerText = "KRESYANINOVA";
+            name.innerText = "YANA";
+            patronymic.innerText = "SERGEEVNA";
+            gender.innerText = "FEM";
+            pob.innerText = "MOSCOW";
+            
+            btn.innerText = "Вернуть кириллицу";
+            isLatin = true;
+        } else {
+            // КИРИЛЛИЦА
+            surname.innerText = "КРЕСТЬЯНИНОВА";
+            name.innerText = "ЯНА";
+            patronymic.innerText = "СЕРГЕЕВНА";
+            gender.innerText = "ЖЕН";
+            pob.innerText = "Г. МОСКВА";
+            
+            btn.innerText = "Перевести на латиницу";
+            isLatin = false;
+        }
+    }
+</script>
+
+</html>
+
+</body>
+</html>

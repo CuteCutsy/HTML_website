@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Информационная страница</title>
+  <style>
+    /* ===== РАДУЖНЫЙ ЗАГОЛОВОК ===== */
+    h1 {
+      font-size: 3em; /* РАЗМЕР ШРИФТА (3EM - ЭТО 48 ПИКСЕЛЕЙ) */
+      text-align: center;
+      background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+      background-size: 200% auto; /* РАСТЯГИВАЕТ ФОН В 2 РАЗА, ЧТОБЫ БЫЛО КУДА ДВИГАТЬСЯ ПРИ АНИМАЦИИ */
+      -webkit-background-clip: text; /* ВЫРЕЗАЕТ ФОН ПО ФОРМЕ БУКВ */
+      background-clip: text; /* ВЫРЕЗАЕТ ФОН ПО ФОРМЕ БУКВ */
+      color: transparent; /* ДЕЛАЕТ САМИ БУКВЫ ПРОЗРАЧНЫМИ, ЧТОБЫ БЫЛО ВИДНО РАДУЖНЫЙ ФОН СКВОЗЬ НИХ */
+      animation: rainbow 5s linear infinite; /* ВКЛЮЧАЕТ АНИМАЦИЮ: ДЛИТЕЛЬНОСТЬ 5 СЕКУНД, ПОВТОР БЕСКОНЕЧНО */
+    }
+
+ /* ===== РАДУЖНЫЕ ССЫЛКИ ===== */
+    ul li a, .right-nav a {
+      display: inline-block; /* ДЕЛАЕТ ССЫЛКУ БЛОЧНО-СТРОЧНОЙ */
+      padding: 2px 6px; /* ДОБАВЛЯЕТ НЕМНОГО ВНУТРЕННЕГО ПРОСТРАНСТВА ВОКРУГ ТЕКСТА */
+      border-radius: 4px; /* СКРУГЛЯЕТ УГЛЫ */
+      text-decoration: none; /* УБИРАЕТ СТАНДАРТНОЕ ПОДЧЕРКИВАНИЕ ССЫЛОК */
+      font-weight: bold; /* ДЕЛАЕТ ТЕКСТ ССЫЛОК ЖИРНЫМ */
+      background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: transform 0.2s ease; /* ПЛАВНЫЙ ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ */
+    }
+
+    /* ===== РАДУЖНЫЕ ЗАГОЛОВКИ РАЗДЕЛОВ ===== */
+    h3 {
+      font-size: 1.5em;
+      background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-bottom: 3px solid; /* РАЗМЕР И ТИП ЛИНИИ */
+      border-image: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3) 1; /* ЗАЛИВАЕМ ЭТУ ЛИНИЮ ГРАДИЕНТОМ */
+      padding-bottom: 5px; /* ОТСТУП ОТ ТЕКСТА ДО РАДУЖНОЙ ЛИНИИ */
+      animation: rainbow 5s linear infinite; /* ТЕКСТ ТОЖЕ ПЕРЕЛИВАЕТСЯ */
+    }
+
+    /* ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ НА ССЫЛКИ */
+    ul li a:hover, .right-nav a:hover { transform: scale(1.15); animation: rainbow 2s linear infinite; } /* ССЫЛКА УВЕЛИЧИВАЕТСЯ НА 15% */
+    ul li a.active { animation: rainbow 3s linear infinite; } /* РАДУГА НАЧИНАЕТ БЕЖАТЬ БЫСТРЕЕ - ЗА 3 СЕКУНДЫ */
+
+    /* ===== АНИМАЦИЯ И ВЫДЕЛЕНИЕ ===== */
+    @keyframes rainbow {
+      0%   { background-position:   0% center; } /* В НАЧАЛЕ АНИМАЦИИ РАДУГА СТОИТ НА МЕСТЕ */
+      100% { background-position: 200% center; } /* В КОНЦЕ СДВИГАЕТСЯ ВПРАВО, ЭФФЕКТ БЕГУЩЕГО ТЕКСТА */
+    }
+    
+    ::selection {
+      background: linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3); /* ФОН ВЫДЕЛЕНИЯ СТАНОВИТСЯ РАДУЖНЫМ */
+      color: #bde4ff; /* А ЦВЕТ САМИХ БУКВ - ГОЛУБЫМ */
+    }
+
+    /* ===== РАДУЖНЫЕ ТОЧКИ ===== */
+    ul li:nth-child(7n+1)::marker { color: #ff0000; }
+    ul li:nth-child(7n+2)::marker { color: #ff7f00; }
+    ul li:nth-child(7n+3)::marker { color: #ffff00; }
+    ul li:nth-child(7n+4)::marker { color: #00ff00; }
+    ul li:nth-child(7n+5)::marker { color: #0000ff; }
+    ul li:nth-child(7n+6)::marker { color: #4b0082; }
+    ul li:nth-child(7n+7)::marker { color: #9400d3; }
+
+    /* ===== ВСПОМОГАТЕЛЬНЫЕ СТИЛИ ЭТИХ "НАВЕРХ" ===== */
+    .right-nav {
+      text-align: right;
+      margin-bottom: 20px; /* ОТСТУП СНИЗУ */
+      font-weight: bold; /* ЖИРНЫЙ ШРИФТ */
+    }
+
+    /* ===== АЛЬБОМ ===== */
+    .album img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover; /* КАРТИНКА ЗАПОЛНЯЕТ КВАДРАТ, НЕ СПЛЮЩИВАЯСЬ */
+      border: 2px solid #bde4ff; /* ГОЛУБАЯ РАМОЧКА ВОКРУГ КАРТИНКИ */
+      border-radius: 5px; /* СКРУГЛЕННЫЕ УГЛЫ */
+      margin: 5px; /* НЕБОЛЬШОЙ ОТСТУП МЕЖДУ КАРТИНКАМИ */
+      transition: transform 0.2s; /* ПЛАВНЫЙ ПЕРЕХОД ДЛЯ АНИМАЦИИ */
+    }
+    .album img:hover {
+      transform: scale(1.2);
+    }
+
+    /* РАМОЧКА ВОКРУГ БЛОКА С ГРАФИЧЕСКИМИ ССЫЛКАМИ */
+      .graphic-links {
+      margin: 20px 0; /* ОТСТУПЫ СВЕРХУ И СНИЗУ */
+      padding: 10px; /* ВНУТРЕННИЙ ОТСТУП */
+      background: #fdfbf7; /* ФОН */
+      display: inline-block; /* ЧТОБЫ РАМКА ОБЛЕГАЛА СОДЕРЖИМОЕ */
+      border: 3px solid; /* РАМКА ТОЛЩИНОЙ 3 ПИКСЕЛЯ */
+      border-image: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3) 1; /* РАДУЖНАЯ ЗАЛИВКА РАМКИ */
+    }
+    .graphic-links img {
+      vertical-align: middle; /* ВЫРАВНИВАНИЕ ПО ЦЕНТРУ СТРОКИ */
+      margin-right: 10px; /* ОТСТУП СПРАВА ОТ КАРТИНКИ */
+    }
+
+  </style>
+</head>
+<body>
+
+  <a id="top"></a>
+
+  <h1>ИНФОРМАЦИОННАЯ СТРАНИЦА</h1>
+  <ul class="main-menu">
+    <li><a href="main.html">Главная страница</a></li>
+    <li><a href="info.html" class="active">Информационная страница с главами</a></li>
+    <li><a href="test_img.html">Фотокарточки</a></li>
+    <li><a href="forma.html">Форма</a></li>
+    <li><a href="passport.html">Паспорт</a></li>
+    <li><a href="table.html">Таблица</a></li>
+    <li><a href="task.html">Задача</a></li>
+    <li><a href="dom.html" >Считывание из DOM</a></li>
+    <li><a href="https://www.hse.ru/" target="_blank">Внешний сайт</a></li>
+    <li> <a href="https://www.hse.ru/" target="_blank"><img src="../images/hse_logo.jpg" width="18" alt="HSE" /></a></li>
+  </ul>
+
+  <hr style="height: 4px; border: none; background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);">
+
+  <!-- ===== ЗАКЛАДКИ НА РАЗДЕЛЫ ===== -->
+  <div class="right-nav">
+    <a href="#section1">Списки</a> | 
+    <a href="#section2">Факты</a> | 
+    <a href="#section3">Альбом</a>
+  </div>
+
+  <!-- ================= РАЗДЕЛ 1 ================= -->
+  <h3 id="section1">Раздел 1. Котики и их особенности</h3>
+  
+  <h4>Топ-3 самых популярных пород:</h4>
+  <ol>
+    <li>Британская короткошерстная</li>
+    <li>Мейн-кун</li>
+    <li>Сфинкс</li>
+  </ol>
+
+  <h4>Что любят котики:</h4>
+  <ul type="circle">
+    <li>Вкусную еду</li>
+    <li>Мягкие подушки</li>
+    <li>Коробки</li>
+  </ul>
+
+  <h4>Виды котиков по окрасу:</h4>
+  <ul>
+    <li>Однотонные
+      <ul type="circle">
+        <li>Черный</li>
+        <li>Белый</li>
+      </ul>
+    </li>
+    <li>Полосатые
+      <ul type="circle">
+        <li>Тигровый</li>
+        <li>Табби</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="right-nav"><a href="#top">К началу страницы ↑</a></div>
+  <hr>
+
+  <!-- ================= РАЗДЕЛ 2 ================= -->
+  <h3 id="section2">Раздел 2. Интересные факты</h3>
+  
+  <p>Кошки живут рядом с человеком уже более 10 000 лет. Учёные доказали, что мурлыканье кошки благотворно влияет на нервную систему.</p>
+  
+  <p>А ещё у каждой кошки рисунок на носу уникален, как отпечатки пальцев у человека!</p>
+
+  <div class="graphic-links">
+    <b>Графические ссылки:</b><br><br>
+    <a href="../images/ktonlo.jpg" target="_blank"> 
+      <img src="../images/ktonlo.jpg" width="10" height="10" alt="Оригинал" title="Открыть оригинал">
+    </a>
+    Открыть оригинал
+    <br><br>
+    <a href="big_img_nlo.html" target="_blank">
+    <img src="https://i.pinimg.com/1200x/5e/e1/43/5ee1430347c51ae72b7f7bbad3ffc2b9.jpg" width="10" height="10" alt="Увеличить" title="Увеличить х2">
+    </a>
+    Увеличить х2 (по центру)
+  </div>
+
+  <div class="right-nav"><a href="#top">К началу страницы ↑</a></div>
+  <hr>
+
+  <!-- ================= РАЗДЕЛ 3 ================= -->
+  <h3 id="section3">Раздел 3. Альбом с котиками</h3>
+  
+  <p>Нажми на миниатюру (50х50), чтобы открыть качественное изображение в новом окне:</p>
+  
+  <div class="album">
+    <a href="../images/kotbleh.jpg" target="_blank"><img src="../images/kotbleh.jpg" alt="Кот 1"></a>
+    <a href="../images/kotshok.jpg" target="_blank"><img src="../images/kotshok.jpg" alt="Кот 2"></a>
+    <a href="../images/ktolatyao.jpg" target="_blank"><img src="../images/ktolatyao.jpg" alt="Кот 3"></a>
+    <a href="../images/kotwhat.jpg" target="_blank"><img src="../images/kotwhat.jpg" alt="Кот 4"></a>
+    <a href="../images/ktonlo.jpg" target="_blank"><img src="../images/ktonlo.jpg" alt="Кот 5"></a>
+  </div>
+
+  <div class="right-nav"><a href="#top">К началу страницы ↑</a></div>
+
+</body>
+</html>
